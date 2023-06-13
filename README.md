@@ -22,7 +22,11 @@ markapp --help
 #     --output-dir TEXT   Output directory
 #     --watch             Watch for changes and recompile
 #     --debounce INTEGER  Debounce time in milliseconds
+#     --serve             Serve the output directory
+#     --host TEXT         Serve host
+#     --port INTEGER      Serve port
 #     --help              Show this message and exit.
+#     Compile markdown files into HTML
 
 markapp tests/sample.md --output-dir .
 

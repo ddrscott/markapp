@@ -35,5 +35,5 @@ tree sample
     ```
     
     ```javascript
-    inner javascipt
+    inner javascript
     ```

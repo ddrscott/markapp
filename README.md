@@ -11,8 +11,22 @@ break them up into multiple files for easy web serving.
 ```sh
 pip install https://github.com/ddrscott/markapp.get
 
-markapp sample.md --output-dir .
+# Get list of options
+markapp --help
 
+#   Usage: markapp [OPTIONS] SRC
+#   
+#     Compile markdown files into HTML
+#   
+#   Options:
+#     --output-dir TEXT   Output directory
+#     --watch             Watch for changes and recompile
+#     --debounce INTEGER  Debounce time in milliseconds
+#     --help              Show this message and exit.
+
+markapp tests/sample.md --output-dir .
+
+# Will generate `sample` directory with the following structure:
 tree sample
 #  sample
 #  ├── index.html

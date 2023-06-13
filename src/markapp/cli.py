@@ -20,8 +20,10 @@ def cli(src, output_dir, watch, debounce, serve, host, port):
     if os.path.isdir(src):
         glob_pattern = os.path.join(src, '*.md')
         for path in glob.glob(glob_pattern):
+            click.echo(f'compiling: {path} -> {output_dir}')
             markapp.compile(path, output_dir)
     elif os.path.isfile(src):
+        click.echo(f'compiling: {src} -> {output_dir}')
         markapp.compile(src, output_dir)
     else:
         raise ValueError(f'Invalid source path: {src}')
@@ -31,10 +33,12 @@ def cli(src, output_dir, watch, debounce, serve, host, port):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         if watch:
             def on_change(path):
+                click.echo(f'compiling: {path} -> {output_dir}')
                 markapp.compile(path, output_dir)
             futures.append(executor.submit(watcher.watch, on_change=on_change, path=src, debounce_ms=debounce))
 
         if serve:
+            click.echo(f'serving {output_dir} on {host}:{port}')
             futures.append(executor.submit(markapp.serve, output_dir, host, port))
 
         # Wait for both functions to finish

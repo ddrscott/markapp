@@ -9,7 +9,7 @@ break them up into multiple files for easy web serving.
 ## Example Usage
 
 ```sh
-pip install https://github.com/ddrscott/markapp.get
+pip install markapp
 
 # Get list of options
 markapp --help

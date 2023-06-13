@@ -2,6 +2,7 @@ import os
 import logging
 
 DEFAULT_OUTPUT = "docs"
+DEFAULT_PORT = "8080"
 
 DEFAULT_TYPE_TO_FILE = {
     "html": "index.html",
@@ -44,3 +45,16 @@ def compile(markdown_file, output_dir=DEFAULT_OUTPUT):
                 logger.info(f"writing {file_path}")
         else:
             logger.info(f"Ignoring block type: {file_type}")
+
+def serve(output_dir=DEFAULT_OUTPUT, host='0.0.0.0', port=8080):
+    import http.server
+    import socketserver
+    import functools
+    import logging
+
+    Handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=output_dir)
+
+    logger = logging.getLogger(__name__)
+    with socketserver.TCPServer((host, port), Handler) as httpd:
+        logger.info(f"serving at {host}:{port}")
+        httpd.serve_forever()

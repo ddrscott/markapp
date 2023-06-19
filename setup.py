@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='markapp',
-    version='0.2.1',
+    version='0.3.1',
     author='Scott Pierce',
     author_email='ddrscott@gmail.com',
     description='A simple markdown to HTML compiler',

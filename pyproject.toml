@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "markapp"
-version = "0.2.1"
+version = "0.3.1"
 description = ""
 authors = ["Scott Pierce <ddrscott@gmail.com>"]
 readme = "README.md"
